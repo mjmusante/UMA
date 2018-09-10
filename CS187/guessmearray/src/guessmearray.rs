@@ -1,5 +1,5 @@
 
-struct GuessMeArray {
+pub struct GuessMeArray {
     guess_count: usize,
     over: bool,
     prior: [u16; 20],
@@ -8,7 +8,7 @@ struct GuessMeArray {
 
 impl GuessMeArray {
 
-    fn new() -> GuessMeArray {
+    pub fn new() -> GuessMeArray {
         GuessMeArray {
             guess_count: 0,
             over: false,
@@ -17,7 +17,7 @@ impl GuessMeArray {
         }
     }
 
-    fn num_matches(aref: &u16, bref: &u16) -> u16 {
+    pub fn num_matches(aref: &u16, bref: &u16) -> u16 {
         let mut retval = 0;
         let mut a = *aref;
         let mut b = *bref;
@@ -40,19 +40,19 @@ impl GuessMeArray {
         self.valid = [true; 9000];
     }
 
-    fn num_guesses(&self) -> usize {
+    pub fn num_guesses(&self) -> usize {
         self.guess_count
     }
 
-    fn is_over(&self) -> bool {
+    pub fn is_over(&self) -> bool {
         self.over
     }
 
-    fn prior_guesses(&self) -> [u16; 20] {
+    pub fn prior_guesses(&self) -> [u16; 20] {
         self.prior
     }
 
-    fn get_guess(&mut self) -> u16 {
+    pub fn get_guess(&mut self) -> u16 {
         let mut guessnow = 0;
 
         for i in 1000..9999 {
@@ -68,7 +68,7 @@ impl GuessMeArray {
         guessnow
     }
 
-    fn update_guess(&mut self, guess: u16) -> bool {
+    pub fn update_guess(&mut self, guess: u16) -> bool {
         let x = self.prior[self.guess_count - 1];
         let mut result = false;
         
